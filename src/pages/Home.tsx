@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import AuthPage from '@/components/AuthPage';
 import logo from '@/logo.png';
+import { AiOutlineMenu, AiOutlineClose,AiOutlineAppstore,AiOutlineQuestionCircle, AiOutlineMail } from "react-icons/ai";
 
 type ModalView = 'choice' | 'auth' | null;
 type AuthMode = 'login' | 'signup';
@@ -26,6 +27,9 @@ export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
   const [modalView, setModalView] = useState<ModalView>(null);
   const [authMode, setAuthMode] = useState<AuthMode>('signup');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -40,6 +44,8 @@ export default function HomePage() {
     setAuthMode(mode);
     setModalView('auth');
   };
+
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-950 text-white overflow-hidden">
@@ -152,18 +158,17 @@ export default function HomePage() {
       )}
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-slate-950/50 border-b border-white/5">
+     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-slate-950/50 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Logo */}
           <div className="flex items-center gap-3">
-          
-              <img src={logo} alt="logo" className='w-39 h-10'/>
-            
-      
+            <img src={logo} alt="logo" className='w-36 h-10'/>
           </div>
-          <div className="hidden md:flex items-center gap-8">
+
+          {/* Desktop Menu (lg+) */}
+          <div className="hidden lg:flex items-center gap-8">
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
             <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How It Works</a>
-            <a href="#team" className="text-gray-300 hover:text-white transition-colors">Team</a>
             <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
             <button 
               onClick={openModal}
@@ -172,7 +177,42 @@ export default function HomePage() {
               Get Started
             </button>
           </div>
+
+          {/* Tablet Menu (md only) - icons only */}
+          <div className="hidden md:flex lg:hidden items-center gap-6">
+            <a href="#features" className="text-gray-300 hover:text-white text-2xl"><AiOutlineAppstore /></a>
+            <a href="#how-it-works" className="text-gray-300 hover:text-white text-2xl"><AiOutlineQuestionCircle /></a>
+            <a href="#contact" className="text-gray-300 hover:text-white text-2xl"><AiOutlineMail /></a>
+            
+          </div>
+
+          {/* Mobile Hamburger */}
+          
+          <div className="md:hidden flex items-center">
+            <button onClick={toggleMobileMenu}>
+              {mobileMenuOpen ? (
+                <AiOutlineClose className="w-8 h-8 text-white" />
+              ) : (
+                <AiOutlineMenu className="w-8 h-8 text-white" />
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu Drawer */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-slate-950/95 backdrop-blur-lg border-t border-white/10">
+            <a href="#features" className="block px-6 py-4 text-gray-300 hover:text-white">Features</a>
+            <a href="#how-it-works" className="block px-6 py-4 text-gray-300 hover:text-white">How It Works</a>
+            <a href="#contact" className="block px-6 py-4 text-gray-300 hover:text-white">Contact</a>
+            <button 
+              onClick={openModal}
+              className="w-full px-6 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium hover:shadow-lg hover:shadow-green-500/30 transition-all"
+            >
+              Get Started
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
