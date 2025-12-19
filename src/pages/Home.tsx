@@ -158,62 +158,79 @@ export default function HomePage() {
       )}
 
       {/* Navigation */}
-     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-slate-950/50 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="logo" className='w-36 h-10'/>
-          </div>
+       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-slate-950/50 border-b border-white/5">
+  <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    {/* Logo */}
+    <div className="flex items-center gap-3">
+      <img src={logo} alt="logo" className='w-36 h-10'/>
+    </div>
 
-          {/* Desktop Menu (lg+) */}
-          <div className="hidden lg:flex items-center gap-8">
-            <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-            <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How It Works</a>
-            <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
-            <button 
-              onClick={openModal}
-              className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full font-medium hover:shadow-lg hover:shadow-green-500/30 transition-all"
-            >
-              Get Started
-            </button>
-          </div>
+    {/* Desktop Menu (lg+) */}
+    <div className="hidden lg:flex items-center gap-8">
+      <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
+      <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How It Works</a>
+      <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
+      <button 
+        onClick={openModal}
+        className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full font-medium hover:shadow-lg hover:shadow-green-500/30 transition-all"
+      >
+        Get Started
+      </button>
+    </div>
 
-          {/* Tablet Menu (md only) - icons only */}
-          <div className="hidden md:flex lg:hidden items-center gap-6">
-            <a href="#features" className="text-gray-300 hover:text-white text-2xl"><AiOutlineAppstore /></a>
-            <a href="#how-it-works" className="text-gray-300 hover:text-white text-2xl"><AiOutlineQuestionCircle /></a>
-            <a href="#contact" className="text-gray-300 hover:text-white text-2xl"><AiOutlineMail /></a>
-            
-          </div>
+    {/* Tablet Menu (md only) - icons only */}
+    <div className="hidden md:flex lg:hidden items-center gap-6">
+      <a href="#features" className="text-gray-300 hover:text-white text-2xl"><AiOutlineAppstore /></a>
+      <a href="#how-it-works" className="text-gray-300 hover:text-white text-2xl"><AiOutlineQuestionCircle /></a>
+      <a href="#contact" className="text-gray-300 hover:text-white text-2xl"><AiOutlineMail /></a>
+    </div>
 
-          {/* Mobile Hamburger */}
-          
-          <div className="md:hidden flex items-center">
-            <button onClick={toggleMobileMenu}>
-              {mobileMenuOpen ? (
-                <AiOutlineClose className="w-8 h-8 text-white" />
-              ) : (
-                <AiOutlineMenu className="w-8 h-8 text-white" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Drawer */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-slate-950/95 backdrop-blur-lg border-t border-white/10">
-            <a href="#features" className="block px-6 py-4 text-gray-300 hover:text-white">Features</a>
-            <a href="#how-it-works" className="block px-6 py-4 text-gray-300 hover:text-white">How It Works</a>
-            <a href="#contact" className="block px-6 py-4 text-gray-300 hover:text-white">Contact</a>
-            <button 
-              onClick={openModal}
-              className="w-full px-6 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium hover:shadow-lg hover:shadow-green-500/30 transition-all"
-            >
-              Get Started
-            </button>
-          </div>
+    {/* Mobile Hamburger */}
+    <div className="md:hidden flex items-center">
+      <button onClick={toggleMobileMenu}>
+        {mobileMenuOpen ? (
+          <AiOutlineClose className="w-8 h-8 text-white" />
+        ) : (
+          <AiOutlineMenu className="w-8 h-8 text-white" />
         )}
-      </nav>
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile Menu Drawer */}
+  {mobileMenuOpen && (
+    <div className="md:hidden bg-slate-950/95 backdrop-blur-lg border-t border-white/10">
+      <a 
+        href="#features" 
+        className="block px-6 py-4 text-gray-300 hover:text-white"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        Features
+      </a>
+      <a 
+        href="#how-it-works" 
+        className="block px-6 py-4 text-gray-300 hover:text-white"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        How It Works
+      </a>
+      <a 
+        href="#contact" 
+        className="block px-6 py-4 text-gray-300 hover:text-white"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        Contact
+      </a>
+      <button 
+        onClick={() => { openModal(); setMobileMenuOpen(false); }}
+        className="w-full px-6 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium hover:shadow-lg hover:shadow-green-500/30 transition-all"
+      >
+        Get Started
+      </button>
+    </div>
+  )}
+</nav>
+
 
       {/* Hero Section */}
       <section className="mt-12 relative min-h-screen flex items-center justify-center px-6 pt-24">

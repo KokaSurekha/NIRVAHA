@@ -41,7 +41,7 @@ export default function AuthPage({ initialMode = 'signup', onClose }: AuthPagePr
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
       </div>
-
+     
       {/* ===== Form Container ===== */}
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row">
         
@@ -55,7 +55,7 @@ export default function AuthPage({ initialMode = 'signup', onClose }: AuthPagePr
 
         {/* Login Form */}
         {mode === 'login' ? (
-          <div className="relative z-10 w-full max-w-md mx-auto bg-white/20 backdrop-blur-xl rounded-3xl border border-white/30 p-8 shadow-2xl animate-scaleIn">
+          <div className="relative z-10 w-full max-w-md mx-auto bg-white/20 backdrop-blur-lg sm:backdrop-blur-xl rounded-3xl border border-white/30 p-8 shadow-2xl animate-scaleIn">
             <div className="text-center mb-8">
               <h2 className="text-4xl font-bold text-slate-800 mb-3">Welcome Back</h2>
               <p className="text-slate-600 text-lg">
