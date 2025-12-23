@@ -7,8 +7,26 @@ import wellness4 from "../wellness4.jpeg";
 import wellness5 from "../wellness5.jpeg";
 import wellness6 from "../wellness6.jpeg";
 import wellness7 from "../wellness7.jpeg";
+import wellness8 from "../wellness8.avif";
+import wellness9 from "../wellness9.webp";
+import wellness10 from "../wellness10.avif";
+import wellness11 from "../wellness11.jpeg";
+import wellness12 from "../wellness12.jpeg";
+import wellness13 from "../wellness13.jpeg";
+import wellness14 from "../wellness14.jpeg";
+import wellness15 from "../wellness15.jpeg";
+import wellness16 from "../wellness16.jpeg";
+import wellness17 from "../wellness17.jpeg";
+import wellness18 from "../wellness18.jpeg";
+import wellness19 from "../wellness19.jpeg";
+import wellness20 from "../wellness20.jpeg";
+import wellness21 from "../wellness21.jpeg";
+import wellness22 from "../wellness22.jpeg";
+import wellness23 from "../wellness23.jpeg";
+import wellness24 from "../wellness24.jpeg";
+import wellness25 from "../wellness25.jpeg";
 
-const images = [wellness1, wellness2, wellness3, wellness4, wellness5, wellness6, wellness7];
+const images = [wellness1, wellness2, wellness3, wellness4, wellness5, wellness6, wellness7,wellness8,wellness9,wellness10,wellness11,wellness12,wellness13,wellness14,wellness15,wellness16,wellness17,wellness18,wellness19,wellness20,wellness21,wellness22,wellness23,wellness24,wellness25];
 
 interface AuthPageProps {
   initialMode?: 'login' | 'signup';
@@ -26,31 +44,65 @@ export default function AuthPage({ initialMode = 'signup', onClose }: AuthPagePr
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center animate-fadeIn">
       
-      {/* ===== Moving Background ===== */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="flex h-full animate-slide-background" style={{ width: `${images.length * 2 * 100}vw` }}>
-          {[...images, ...images].map((img, index) => (
-            <div key={index} className="h-full flex-shrink-0 w-screen">
-              <img
-                src={img}
-                alt={`Wellness background ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
+      {/* ===== Grid Background Animation ===== */}
+  
+  {/* ===== Grid Background Animation ONLY FOR LOGIN ===== */}
+  {mode === 'login' && (
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 w-full h-full p-2">
+        {images.map((img, index) => (
+          <div
+            key={index}
+            className="relative rounded-xl overflow-hidden border-2 border-white/290"
+            style={{
+              animation: "gridSlide 6s linear infinite",
+              animationDelay: `${index * 0.2}s`
+            }}
+          >
+            <img
+              src={img}
+              alt={`Wellness ${index}`}
+              className="w-full h-full object-cover blur-0 md:blur-[0.6px]"
+              style={{
+                animation: "gridZoom 5s ease-in-out infinite"
+              }}
+            />
+          </div>
+        ))}
       </div>
-     
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30 md:bg-black/50" />
+
+      <style>{`
+        @keyframes gridSlide {
+          0% { transform: translate(0, 0); }
+          25% { transform: translate(12px, -8px); }
+          50% { transform: translate(-12px, 8px); }
+          75% { transform: translate(8px, -6px); }
+          100% { transform: translate(0, 0); }
+        }
+
+        @keyframes gridZoom {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.07); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
+    </div>
+  )}
+
       {/* ===== Form Container ===== */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row">
+      <div className="relative z-10 w-full max-w-md mx-auto
+    bg-white/40
+    backdrop-blur-0">
         
         {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-6 right-6 z-50 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all"
         >
-          <X className="w-6 h-6 text-white" />
+          <X className="w-6 h-6 text-black" />
         </button>
 
         {/* Login Form */}
@@ -140,7 +192,7 @@ export default function AuthPage({ initialMode = 'signup', onClose }: AuthPagePr
           </div>
         ) : (
           /* Signup Form */
-          <div className="relative z-10 w-full max-w-md mx-auto bg-slate-900/80 backdrop-blur-xl rounded-3xl border border-white/20 p-8 shadow-2xl animate-scaleIn">
+          <div className="relative z-10 w-full max-w-md mx-auto bg-slate-9 bg-white/40">
             <div className="text-center mb-8">
               <h2 className="text-4xl font-bold text-white mb-3">Create Account</h2>
               <p className="text-gray-400 text-lg">Sign up to begin your spiritual wellness journey</p>
