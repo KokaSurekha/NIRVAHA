@@ -56,43 +56,53 @@ export default function AuthPage({
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40">
 
-      {/* ================= LOGIN GRID BACKGROUND ================= */}
+      
+      {/* ================= LOGIN BACKGROUND ANIMATION ================= */}
       {mode === 'login' && (
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 w-full h-full p-2">
-            {images.map((img, index) => (
-              <div
-                key={index}
-                className="rounded-xl overflow-hidden border-2 border-white/60"
-                style={{
-                  animation: "gridSlide 10s linear infinite",
-                  animationDelay: `${index * 0.15}s`
-                }}
-              >
-                <img
-                  src={img}
-                  className="w-full h-full object-cover"
-                  style={{ animation: "gridZoom 6s linear infinite" }}
-                />
-              </div>
-            ))}
-          </div>
+  <div className="absolute inset-0 overflow-hidden">
 
-          <div className="absolute inset-0 bg-black/50" />
-
-          <style>{`
-            @keyframes gridSlide {
-              0% { transform: translateX(-20px); }
-              100% { transform: translateX(20px); }
-            }
-            @keyframes gridZoom {
-              0% { transform: scale(1); }
-              50% { transform: scale(1.08); }
-              100% { transform: scale(1); }
-            }
-          `}</style>
+    {/* IMAGE GRID */}
+    <div className="grid grid-cols-4 sm:grid-cols-8 gap-4 w-full h-full p-6">
+      {images.map((img, index) => (
+        <div  
+          key={index}
+          className="flex items-center justify-center"
+          style={{
+            animation: `floatLoop 8s linear infinite`,
+          
+            animationDirection: `${Math.floor(index % 8) % 2 === 0 ? 'normal' : 'reverse'}`
+            // On mobile, first and second columns will still alternate
+          }}  
+        >
+          <img
+            src={img}
+            className="w-48 h-48 object-cover rounded-2xl opacity-30"
+          />
         </div>
-      )}
+      ))}
+    </div>
+
+    {/* Dark Overlay */}
+    <div className="absolute inset-0 bg-black/50" />
+
+    {/* Animation Style */}
+    <style>{`
+      @keyframes floatLoop {
+        0% {
+          transform: translateY(40px) scale(1);
+          opacity: 0.3;
+        }
+        100% {
+          transform: translateY(-40px) scale(1.08);
+          opacity: 0.45;
+        }
+      }
+    `}</style>
+
+  </div>
+)}
+
+
 
       {/* ================= CLOSE BUTTON ================= */}
       <button
@@ -104,7 +114,7 @@ export default function AuthPage({
 
       {/* ================= LOGIN ================= */}
       {mode === 'login' && (
-        <div className="relative z-10 w-full max-w-md bg-white/25 backdrop-blur-xl rounded-3xl p-8 border border-white/30">
+        <div className="relative z-10 w-full max-w-md bg-white/25 backdrop-blur-xl rounded-3xl p-8 border border-white/30 p-6 md:p-10 shadow-2xl animate-scaleIn text-black">
           <h2 className="text-4xl font-bold text-center mb-3">Welcome Back</h2>
           <p className="text-center text-slate-600 mb-6">
             Sign in to continue your journey
