@@ -52,6 +52,7 @@ export default function AuthPage({
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [selectedRole, setSelectedRole] = useState<UserRole>('user');
+  
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40">
@@ -83,7 +84,7 @@ export default function AuthPage({
     </div>
 
     {/* Dark Overlay */}
-    <div className="absolute inset-0 bg-black/50" />
+    <div className="absolute inset-0 bg-black/20" />
 
     {/* Animation Style */}
     <style>{`
