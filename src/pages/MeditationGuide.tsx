@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{ useState } from "react";
 import heroImage from "../hero.png";
 import wellness1 from "../wellness1.jpeg";
 import wellness2 from "../wellness2.jpeg";
@@ -19,7 +19,10 @@ import savasana from "../Savasana.jpeg";
 import sukhasana from "../Sukhasana.jpeg";
 import vairasana from "../Virasana.jpeg";
 import virkshana  from "../Vrikshasana.jpeg";
-import virkshasana from "../Vajrasana.jpeg";
+import vajrasana from "../Vajrasana.jpeg";
+import siddhasana from "../siddhasana.jpeg";
+import paschimottanasana from "../Paschimottanasana.jpeg";
+
 
 
 
@@ -141,108 +144,354 @@ const MeditationImages: React.FC = () => (
 
 
 // Meditation Poses Section
+// =====================
+// Meditation Poses
+// =====================
 const MeditationPoses: React.FC = () => {
+  const [activePose, setActivePose] = useState<any>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
   const poses = [
-    {
-      name: "Lotus Pose (Padmasana)",
-      intensity: "Gentle",
-      duration: "10–30 mins",
-      image: padmasana,
-    },
-    {
-      name: "Easy Pose (Sukhasana)",
-      intensity: "Gentle",
-      duration: "5–20 mins",
-      image: sukhasana,
-    },
-    {
-      name: "Thunderbolt Pose (Vajrasana)",
-      intensity: "Gentle",
-      duration: "5–15 mins",
-      image: vairasana,
-    },
-    {
-      name: "Tree Pose (Vrikshasana)",
-      intensity: "Moderate",
-      duration: "1–3 mins",
-      image: virkshasana,
-    },
-    {
-      name: "Child's Pose (Balasana)",
-      intensity: "Gentle",
-      duration: "10–30 mins",
-      image: balasana,
-    },
-    {
-      name: "Corpse Pose (Savasana)",
-      intensity: "Gentle",
-      duration: "5–20 mins",
-      image: savasana,
-    },
-    {
-      name: "Hero Pose (Virasana)",
-      intensity: "Gentle",
-      duration: "5–15 mins",
-      image: vairasana,
-    },
-    {
-      name: "Butterfly Pose (Baddha Konasana)",
-      intensity: "Moderate",
-      duration: "3-10 mins",
-      image: butterfly,
-    },
-    {
-      name: "Seated Forward Bend (Paschimottanasana)",
-      intensity: "Gentle",
-      duration: "1-5 mins",
-      image: vairasana,
-    },
-    {
-      name: "Half Spinal Twist (Ardha Matsyendrasana)",
-      intensity: "Gentle",
-      duration: "30 seconds - 2 minutes per side",
-      image: ardha,
-    },
     
+    {
+      id: 1,
+      name: "Easy Pose (Sukhasana)",
+      practiceLevel: "Beginner",
+      intensity: "Gentle",
+      duration: "5–20 minutes",
+      image: sukhasana,
+      description:
+        "A simple and comfortable seated posture ideal for beginners.",
+      youtubeUrl: "https://www.youtube.com/embed/j7rKKpwdXNE",
+      guidelines: [
+        "Sit cross-legged comfortably",
+        "Spine tall",
+        "Relax shoulders",
+        "Focus on breathing",
+      ],
+      benefits: [
+        "Reduces stress",
+        "Improves focus",
+        "Relaxes body",
+      ],
+    },
+    {
+      id: 2,
+      name: "Child's Pose (Balasana)",
+      practiceLevel: "Beginner",
+      intensity: "Gentle",
+      duration: "1–5 minutes",
+      image: balasana,
+      description:
+        "A deeply calming pose that relaxes the spine and nervous system.",
+      youtubeUrl: "https://www.youtube.com/embed/2MJGg-dUKh0",
+      guidelines: [
+        "Kneel on mat",
+        "Fold forward",
+        "Rest forehead down",
+        "Arms relaxed",
+      ],
+      benefits: [
+        "Relieves tension",
+        "Calms mind",
+        "Reduces anxiety",
+      ],
+    },
+  {
+  id: 3,
+  name: "Thunderbolt Pose (Vajrasana)",
+  practiceLevel: "Beginner",
+  intensity: "Gentle",
+  duration: "5–15 minutes",
+  image: vajrasana,
+  description:
+    "A seated kneeling posture that aids digestion and promotes stillness for meditation.",
+  youtubeUrl: "https://www.youtube.com/embed/6V6nKz5d7oU",
+  guidelines: [
+    "Kneel on the mat",
+    "Sit back on heels",
+    "Keep spine straight",
+    "Hands on thighs",
+  ],
+  benefits: [
+    "Improves digestion",
+    "Enhances focus",
+    "Strengthens posture",
+  ],
+  precautions: [
+    "Avoid if knee pain",
+    "Use cushion under ankles",
+  ],
+},
+{
+  id: 4,
+  name: "Perfect Pose (Siddhasana)",
+  practiceLevel: "Intermediate",
+  intensity: "Gentle",
+  duration: "10–30 minutes",
+  image: siddhasana,
+  description:
+    "A traditional meditation pose believed to awaken inner energy.",
+  youtubeUrl: "https://www.youtube.com/embed/7VYJ9nF4m0Q",
+  guidelines: [
+    "Sit with one heel at perineum",
+    "Other foot placed above",
+    "Spine upright",
+    "Hands resting on knees",
+  ],
+  benefits: [
+    "Balances energy",
+    "Improves concentration",
+    "Stabilizes mind",
+  ],
+  precautions: [
+    "Avoid if hip stiffness",
+  ],
+},
+{
+  id: 5,
+  name: "Seated Forward Fold (Paschimottanasana)",
+  practiceLevel: "Beginner",
+  intensity: "Gentle",
+  duration: "2–5 minutes",
+  image:paschimottanasana ,
+  description:
+    "A calming forward bend that relaxes the nervous system.",
+  youtubeUrl: "https://www.youtube.com/embed/T8sgVyFZ3FQ",
+  guidelines: [
+    "Sit with legs extended",
+    "Fold forward gently",
+    "Relax head and neck",
+    "Breathe deeply",
+  ],
+  benefits: [
+    "Calms nervous system",
+    "Reduces anxiety",
+    "Relieves fatigue",
+  ],
+  precautions: [
+    "Avoid deep stretch if back pain",
+  ],
+},
+{
+  id: 6,
+  name: "Corpse Pose (Shavasana)",
+  practiceLevel: "Beginner",
+  intensity: "Very Gentle",
+  duration: "5–20 minutes",
+  image: savasana,
+  description:
+    "A deeply restorative posture for mindfulness and body awareness.",
+  youtubeUrl: "https://www.youtube.com/embed/1VYlOKUdylM",
+  guidelines: [
+    "Lie flat on back",
+    "Arms relaxed by sides",
+    "Eyes closed",
+    "Observe breath",
+  ],
+  benefits: [
+    "Deep relaxation",
+    "Reduces stress",
+    "Improves awareness",
+  ],
+  precautions: [
+    "Use blanket if cold",
+  ],
+},
+{
+  id: 7,
+  name: "Butterfly Pose (Baddha Konasana)",
+  practiceLevel: "Beginner",
+  intensity: "Gentle",
+  duration: "5–15 minutes",
+  image: butterfly,
+  description:
+    "A relaxing seated pose that opens the hips and calms the nervous system, making it ideal before meditation.",
+  youtubeUrl: "https://www.youtube.com/embed/EVd9Z9dZzFg",
+  guidelines: [
+    "Sit with spine straight",
+    "Bring soles of feet together",
+    "Hold feet and gently flap knees",
+    "Breathe deeply and relax",
+  ],
+  benefits: [
+    "Opens hips",
+    "Reduces stress",
+    "Improves flexibility",
+  ],
+  precautions: [
+    "Avoid forcing knees down",
+    "Use cushions under thighs if needed",
+  ],
+},
+
+{
+  id: 8,
+  name: "Half Spinal Twist (Ardha Matsyendrasana)",
+  practiceLevel: "Intermediate",
+  intensity: "Moderate",
+  duration: "3–8 minutes",
+  image: ardha,
+  description:
+    "A seated twisting posture that improves spinal flexibility and energizes the body while keeping the mind alert.",
+  youtubeUrl: "https://www.youtube.com/embed/9Kk9f9R5Z9w",
+  guidelines: [
+    "Sit with legs extended",
+    "Bend one knee and place foot outside thigh",
+    "Twist torso gently",
+    "Keep spine upright",
+  ],
+  benefits: [
+    "Improves digestion",
+    "Enhances spinal mobility",
+    "Improves focus",
+  ],
+  precautions: [
+    "Avoid if severe back pain",
+    "Twist gently without jerks",
+  ],
+},
+
+{
+  id: 9,
+  name: "Tree Pose (Vrikshasana)",
+  practiceLevel: "Beginner",
+  intensity: "Moderate",
+  duration: "1–5 minutes",
+  image: virkshana,
+  description:
+    "A balancing pose that builds focus, stability, and mental clarity — excellent preparation for meditation.",
+  youtubeUrl: "https://www.youtube.com/embed/wdln9qWYloU",
+  guidelines: [
+    "Stand straight",
+    "Place one foot on inner thigh or calf",
+    "Hands in prayer position",
+    "Fix gaze on one point",
+  ],
+  benefits: [
+    "Improves balance",
+    "Builds concentration",
+    "Strengthens legs",
+  ],
+  precautions: [
+    "Avoid if dizziness",
+    "Use wall support if needed",
+  ],
+},
+
+
   ];
 
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-6xl mx-auto px-4">
+    <>
+      <section className="py-24 bg-background">
+        <div className="max-w-6xl mx-auto px-4">
 
-        <div className="mb-16 text-center">
-          <h2 className="text-4xl">
-            Yoga for <span className="italic text-emerald-600">Meditation</span>
-          </h2>
-          <p className="text-gray-500 mt-3">
-            Prepare your body for stillness
-          </p>
-        </div>
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl">
+              Yoga for <span className="italic text-emerald-600">Meditation</span>
+            </h2>
+            <p className="text-gray-500 mt-3">
+              Click a pose to explore details
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {poses.map((pose, i) => (
-            <div
-              key={i}
-              className={`rounded-2xl bg-white shadow-md overflow-hidden
-              ${i % 2 === 1 ? "md:translate-y-10" : ""}`}
-            >
-              <img
-                src={pose.image}
-                alt={pose.name}
-                className="h-56 w-full object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-medium">{pose.name}</h3>
-                <p className="text-sm text-gray-500 mt-1">
-                  {pose.intensity} • {pose.duration}
-                </p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {poses.map((pose, index) => (
+              <div
+                key={pose.id}
+                onClick={() => {
+                  setActivePose(pose);
+                  setIsOpen(true);
+                }}
+                className={`cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition hover:shadow-2xl
+                  ${index % 2 === 0 ? "animate-float-up" : "animate-float-down"}
+                `}
+              >
+                <img
+                  src={pose.image}
+                  alt={pose.name}
+                  className="h-52 w-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold">{pose.name}</h3>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {pose.intensity} • {pose.duration}
+                  </p>
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Modal */}
+      <YogaDetailModal
+        pose={activePose}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+    </>
+  );
+};
+// =====================
+// Yoga Detail Modal
+// =====================
+const YogaDetailModal = ({ pose, isOpen, onClose }: any) => {
+  if (!isOpen || !pose) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center">
+      <div className="relative bg-white max-w-3xl w-full rounded-2xl p-6 overflow-y-auto max-h-[90vh]">
+
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-xl font-bold"
+        >
+          ✕
+        </button>
+
+        <h2 className="text-3xl font-semibold mb-4">{pose.name}</h2>
+
+        <img
+          src={pose.image}
+          alt={pose.name}
+          className="w-full h-72 object-cover rounded-xl mb-4"
+        />
+
+        <p className="text-gray-600 mb-4">{pose.description}</p>
+
+        <h4 className="font-semibold mb-2">Steps</h4>
+        <ul className="list-disc pl-6 mb-4">
+          {pose.guidelines.map((step: string, i: number) => (
+            <li key={i}>{step}</li>
+          ))}
+        </ul>
+
+        <h4 className="font-semibold mb-2">Benefits</h4>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {pose.benefits.map((benefit: string) => (
+            <span
+              key={benefit}
+              className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm"
+            >
+              ✓ {benefit}
+            </span>
           ))}
         </div>
 
+        {pose.youtubeUrl && (
+          <iframe
+            src={pose.youtubeUrl}
+            className="w-full h-64 rounded-xl"
+            allowFullScreen
+          />
+        )}
+        
       </div>
-    </section>
+    </div>
   );
 };
 

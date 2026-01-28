@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { X, Mail, Lock, User, ArrowRight, Eye, EyeOff } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
+
 
 import wellness1 from "../wellness1.jpeg";
 import wellness2 from "../wellness2.jpeg";
@@ -48,6 +50,7 @@ export default function AuthPage({
   onClose
 }: AuthPageProps) {
 
+  const navigate = useNavigate();
   const [mode, setMode] = useState<'login' | 'signup'>(initialMode);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -107,7 +110,7 @@ export default function AuthPage({
 
       {/* ================= CLOSE BUTTON ================= */}
       <button
-        onClick={onClose}
+        onClick={() => navigate(-1)}
         className="absolute top-6 right-6 z-50 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center"
       >
         <X className="text-black" />

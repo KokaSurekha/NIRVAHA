@@ -51,9 +51,11 @@ export default function HomePage() {
   
 
   // Redirect to booking page
-  const goToBooking = () => {
-    navigate('/booking'); // make sure you have a route for /booking
-  };
+ 
+  const goToAuth = () => {
+  navigate('/auth');
+};
+
   
   
 
@@ -80,7 +82,12 @@ export default function HomePage() {
            
 <a
   href="#meditation"
-  className="block px-6 py-4 text-gray-300 hover:text-white"
+  className="relative px-3 py-2 text-[15px] font-medium tracking-wide text-gray-300 transition-all duration-300 
+             hover:text-white
+             after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 
+             after:bg-gradient-to-r after:from-emerald-400 after:to-teal-400 
+             after:transition-all after:duration-300 after:-translate-x-1/2
+             hover:after:w-full"
   onClick={() => setMobileMenuOpen(false)}
 >
   Meditation
@@ -88,19 +95,41 @@ export default function HomePage() {
 
             <a
   href="#chatbot"
-  className="text-gray-300 hover:text-white transition-colors"
+  className="px-4 py-2 text-sm font-medium rounded-full 
+             text-emerald-300 bg-emerald-500/10 
+             hover:bg-emerald-500/20 hover:text-white 
+             transition-all shadow-sm shadow-emerald-500/20"
   onClick={(e) => { e.preventDefault(); setShowChatbot(true); }}
 >
   Chatbot
 </a>
-            <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-            <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How It Works</a>
-            <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
+            <a href="#features" className="relative px-3 py-2 text-[15px] font-medium tracking-wide text-gray-300 transition-all duration-300 
+             hover:text-white
+             after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 
+             after:bg-gradient-to-r after:from-emerald-400 after:to-teal-400 
+             after:transition-all after:duration-300 after:-translate-x-1/2
+             hover:after:w-full" >Features</a>
+            <a href="#how-it-works" className="relative px-3 py-2 text-[15px] font-medium tracking-wide text-gray-300 transition-all duration-300 
+             hover:text-white
+             after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 
+             after:bg-gradient-to-r after:from-emerald-400 after:to-teal-400 
+             after:transition-all after:duration-300 after:-translate-x-1/2
+             hover:after:w-full">How It Works</a>
+            <a href="#contact" className="relative px-3 py-2 text-[15px] font-medium tracking-wide text-gray-300 transition-all duration-300 
+             hover:text-white
+             after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 
+             after:bg-gradient-to-r after:from-emerald-400 after:to-teal-400 
+             after:transition-all after:duration-300 after:-translate-x-1/2
+             hover:after:w-full" >Contact</a>
            
 
             <button 
-              onClick={goToBooking}
-              className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full font-medium hover:shadow-lg hover:shadow-green-500/30 transition-all"
+              onClick={goToAuth}
+              className="px-7 py-2.5 rounded-full font-semibold tracking-wide text-white
+           bg-gradient-to-r from-emerald-500 to-green-500
+           hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/40
+           transition-all duration-300"
+
             >
               Get Started
             </button>
@@ -159,8 +188,8 @@ export default function HomePage() {
             
 
             <button 
-              onClick={() => { goToBooking(); setMobileMenuOpen(false); }}
-              className="w-full px-6 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium hover:shadow-lg hover:shadow-green-500/30 transition-all"
+               onClick={goToAuth}
+               className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full font-medium"
             >
               Get Started
             </button>
@@ -292,7 +321,7 @@ export default function HomePage() {
 
         <div className="mt-auto flex items-center gap-2 pt-6 border-t border-slate-700">
           <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-black font-bold">
-            JD
+            NW
           </div>
           <span className="text-sm">Nirvaha Wellness</span>
         </div>
@@ -309,24 +338,44 @@ export default function HomePage() {
           ✕
         </button>
 
+        <div className="flex flex-col gap-3 max-h-[420px] overflow-y-auto pr-2">
+  {messages.map((msg, index) => (
+    <div
+      key={index}
+      className={`max-w-[70%] px-4 py-2 rounded-xl text-sm ${
+        msg.sender === "user"
+          ? "ml-auto bg-emerald-500 text-white"
+          : "mr-auto bg-gray-200 text-gray-800"
+      }`}
+    >
+      {msg.text}
+    </div>
+  ))}
+</div>
+
+
         {/* Center text */}
-        <div className="flex flex-col items-center justify-center h-full text-center">
-          <div className="text-3xl mb-3 text-emerald-500">🌿</div>
+       {messages.length === 0 && input.length === 0 &&(
+  <div className="flex flex-col items-center justify-center h-full text-center">
+    <div className="text-3xl mb-3 text-emerald-500">🌿</div>
+    <h1 className="text-3xl font-bold mb-2">
+      How can I support your wellness today?
+    </h1>
+    <p className="text-gray-500 max-w-md">
+      Your sanctuary for peaceful conversation and holistic support.
+    </p>
+  </div>
+)}
 
-          <h1 className="text-3xl font-bold mb-2">
-            How can I support your wellness today?
-          </h1>
 
-          <p className="text-gray-500 max-w-md">
-            Your sanctuary for peaceful conversation and holistic support.
-          </p>
-        </div>
+
 
         {/* Bottom input */}
         <div className="absolute bottom-6 left-6 right-6 flex gap-3">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             placeholder="Type your message..."
             className="flex-1 border px-4 py-3 rounded-xl focus:outline-none"
           />
