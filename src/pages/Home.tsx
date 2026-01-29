@@ -314,7 +314,7 @@ export default function HomePage() {
     <div className="w-full max-w-6xl h-[600px] bg-[#f8fafc] rounded-2xl flex overflow-hidden shadow-2xl">
 
       {/* LEFT SIDEBAR */}
-      <div className="w-1/4 bg-[#0f172a] text-white p-5 flex flex-col">
+      <div className="w-1/3 bg-[#0f172a] text-white p-5 flex flex-col">
         <h2 className="text-lg font-semibold mb-4">Chat History</h2>
 
         <button className="bg-emerald-500 py-2 rounded-lg text-sm mb-6">
