@@ -30,6 +30,18 @@ import paschimottanasana from "../Paschimottanasana.jpeg";
 export default function MeditationGuide() {
   return (
     <div className="font-sans text-gray-700">
+      <button
+        onClick={() => window.history.back()}
+        className="fixed top-5 right-5 z-50 
+                   flex h-10 w-10 items-center justify-center 
+                   rounded-full bg-black/40 text-white 
+                   backdrop-blur-md 
+                   hover:bg-black/70 transition"
+        aria-label="Close page"
+      >
+        ✕
+      </button>
+      
       <HeroSection />
       <MeditationImages />
       <MeditationPoses />

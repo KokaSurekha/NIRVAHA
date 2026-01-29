@@ -74,7 +74,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img src={logo} alt="logo" className='w-36 h-10'/>
+            <img src={logo} alt="logo" className='w-40 h-12'/>
           </div>
 
           {/* Desktop Menu */}
@@ -157,9 +157,16 @@ export default function HomePage() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-slate-950/95 backdrop-blur-lg border-t border-white/10">
+          <a
+  href="#meditation"
+  className="block px-6 py-4 text-gray-300 hover:text-white"
+  onClick={() => setMobileMenuOpen(false)}
+>
+  Meditation
+</a>
             <a
   href="#chatbot"
-  className="text-gray-300 hover:text-white transition-colors"
+  className="block px-6 py-4 text-gray-300 hover:text-white"
   onClick={(e) => { e.preventDefault(); setShowChatbot(true); }}
 >
   Chatbot
@@ -706,19 +713,19 @@ export default function HomePage() {
           <h2 className="text-2xl font-semibold">Multiple Ways to Connect</h2>
 
           <div className="bg-red-50 border border-red-200 rounded-xl p-5">
-            <h3 className="font-semibold">Emergency Support</h3>
+            <h3 className="font-semibold text-gray-600">Emergency Support</h3>
             <p className="text-gray-700">7780754541</p>
             <span className="text-red-500 text-sm">Available 24/7 for crisis situations</span>
           </div>
 
           <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
-            <h3 className="font-semibold">General Inquiries</h3>
+            <h3 className="font-semibold text-gray-600">General Inquiries</h3>
             <p className="text-gray-700">nirvaha6@gmail.com</p>
             <span className="text-sm text-gray-600">Response within 4 hours</span>
           </div>
 
           <div className="bg-cyan-50 border border-cyan-200 rounded-xl p-5">
-            <h3 className="font-semibold">Global Headquarters</h3>
+            <h3 className="font-semibold text-gray-600">Global Headquarters</h3>
             <p className="text-gray-700">Hyderabad, India</p>
             <span className="text-sm text-gray-600">Serving 2+ countries worldwide</span>
           </div>
@@ -732,10 +739,10 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
-                <Sparkles className="w-6 h-6" />
+              <div>
+                <img src={logo} alt="logo" className='w-40 h-12'/>
               </div>
-              <span className="text-xl font-bold">Nirvaha</span>
+              
             </div>
             
             <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
