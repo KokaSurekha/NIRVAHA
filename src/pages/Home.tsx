@@ -16,6 +16,7 @@ import {
 import { AiOutlineMenu, AiOutlineClose, AiOutlineAppstore, AiOutlineQuestionCircle, AiOutlineMail } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import logo from '@/logo.png';
+import buddhaBg from '../wellness1.jpeg';
 
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -327,20 +328,27 @@ export default function HomePage() {
         </div>
 
         <div className="mt-auto flex items-center gap-2 pt-6 border-t border-slate-700">
-          <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-black font-bold">
-            NW
-          </div>
-          <span className="text-sm">Nirvaha Wellness</span>
+          <div className="flex items-center gap-2">
+  <img
+    src={logo}
+    alt="Nirvaha"
+    className="w-25 h-10 rounded-full object-cover"
+  />
+
+</div>
         </div>
       </div>
 
       {/* RIGHT AREA */}
-      <div className="flex-1 relative bg-white p-10">
+      <div
+  className="flex-1 relative p-10 bg-cover bg-center"
+  style={{ backgroundImage: `url(${buddhaBg})` }}
+>
 
         {/* Close button */}
         <button
           onClick={() => setShowChatbot(false)}
-          className="absolute top-4 right-6 text-xl font-bold text-gray-500 hover:text-black"
+          className="absolute top-4 right-6 text-xl font-bold text-white-500 hover:text-grey"
         >
           ✕
         </button>
@@ -362,7 +370,7 @@ export default function HomePage() {
 
 
         {/* Center text */}
-       {messages.length === 0 && input.length === 0 &&(
+       {messages.length === 0 && (
   <div className="flex flex-col items-center justify-center h-full text-center">
     <div className="text-3xl mb-3 text-emerald-500">🌿</div>
     <h1 className="text-3xl font-bold mb-2">
@@ -384,7 +392,7 @@ export default function HomePage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             placeholder="Type your message..."
-            className="flex-1 border px-4 py-3 rounded-xl focus:outline-none"
+            className="flex-1 border px-4 py-3 rounded-xl focus:outline-none text-black placeholder-gray-400 bg-white"
           />
           <button
             onClick={sendMessage}
