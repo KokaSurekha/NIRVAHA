@@ -17,6 +17,7 @@ import { AiOutlineMenu, AiOutlineClose, AiOutlineAppstore, AiOutlineQuestionCirc
 import { useNavigate } from 'react-router-dom';
 import logo from '@/logo.png';
 import buddhaBg from '../wellness1.jpeg';
+import heroVideo from '../herovd.mp4'
 
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -207,15 +208,18 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="mt-12 relative min-h-screen flex items-center justify-center px-6 pt-24">
-        <div 
-          className="absolute inset-0 opacity-60"
-          style={{
-            backgroundImage: 'url(https://019b210f-ae14-72b2-bf42-7e874042f3e1.mochausercontent.com/hero-meditation-background.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transform: `translateY(${scrollY * 0.5}px)`
-          }}
-        />
+        
+        {/* Video Background */}
+<video
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="absolute inset-0 w-full h-full object-cover"
+>
+  <source src={heroVideo} type="video/mp4" />
+</video>
+
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-emerald-950/40 to-slate-950" />
         
         <div className="relative z-10 max-w-5xl mx-auto text-center">
