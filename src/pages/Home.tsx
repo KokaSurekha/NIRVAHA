@@ -207,7 +207,7 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="mt-12 relative min-h-screen  w-full overflow-hidden flex items-center justify-center px-6 pt-24">
+      <section className="mt-12 relative min-h-screen flex items-center justify-center px-6 pt-24">
         
         {/* Video Background */}
 <video
@@ -215,13 +215,7 @@ export default function HomePage() {
   loop
   muted
   playsInline
-  preload="metadata"
-    className="
-      absolute inset-0 
-      w-full h-full 
-      object-cover 
-      scale-105
-    "
+  className="absolute inset-0 w-full h-full object-cover"
 >
   <source src={heroVideo} type="video/mp4" />
 </video>
